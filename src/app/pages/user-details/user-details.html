@@ -1,0 +1,33 @@
+<section class="user-details-section">
+    <app-button-group [buttons]="[backButton]"></app-button-group>
+   
+    @if (userService.user() !== null) {
+        <div class="user-details-profile">
+            <h3 class="user-details-title">{{userService.user()!.name}}</h3>
+            <p class="user-details-info"><strong>E-mail: </strong>{{userService.user()!.email}}</p>
+            <p class="user-details-info"><strong>Telefone: </strong>{{userService.user()!.phone}}</p>
+            <app-button-group [buttons]="userButtons()"></app-button-group>
+            <app-address-card-container 
+                [addresses]="addresses()" 
+                (clickToDelete)="showDeleteModalForAddress($event)"
+            >
+            </app-address-card-container>
+        </div>
+        <app-confirm-modal 
+            [title]="modalTitle()" 
+            [message]="modalText()"
+            [isOpen]="isOpenToDelete()"
+            (onCancel)="closeConfirmDeleteModal()"
+            (onConfirm)="modalAction()()"
+        >
+
+        </app-confirm-modal>
+    }
+
+    @if (shouldShowMessage()) {
+        <p class="user-details-not-found-message">O usuário não foi encontrado</p>
+    }
+
+    
+    
+</section>

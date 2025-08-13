@@ -1,0 +1,5 @@
+<section class="home">
+    <h1>Início</h1>
+    <app-button-group [buttons]="buttons"></app-button-group>
+    <app-user-table [users]="this.userService.users()" [showEmptyMessage]="searched() && userService.users().length === 0"></app-user-table>
+</section>

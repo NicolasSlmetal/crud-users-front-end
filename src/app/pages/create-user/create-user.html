@@ -1,0 +1,5 @@
+<section class="create-user-section">
+    <h1>Inserir um novo usuário</h1>
+    <app-button-group [buttons]="buttons"></app-button-group>
+    <app-user-form (userSubmit)="submitToCreate($event)"></app-user-form>
+</section>

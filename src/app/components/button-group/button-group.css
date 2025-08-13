@@ -1,0 +1,15 @@
+.button-group-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-width: 80vw;
+    border: 1px solid var(--black);
+    gap: 2px;
+    flex: 1 1;
+}
+
+.button-group-container button {
+    min-height: 100%;
+    font-size: 1em;
+}

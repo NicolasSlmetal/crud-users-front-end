@@ -1,0 +1,11 @@
+<div class="button-group-container">
+    @for (button of buttons(); track button.text) {
+        @if (isButtonItem(button)) {
+            <button [class]="`button ${button.extraClasses !== undefined ? button.extraClasses.join(' ') : ''}`" (click)="button.callback($event)">{{button.text}}</button>
+        }
+
+        @if (isAnchorItem(button)) {
+            <a [class]="`button ${button.extraClasses !== undefined ? button.extraClasses.join(' ') : ''}`" [routerLink]="button.path">{{button.text}}</a>
+        }
+    }
+</div>

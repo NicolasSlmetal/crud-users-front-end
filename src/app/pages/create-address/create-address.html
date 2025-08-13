@@ -1,0 +1,5 @@
+<section class="create-address-container">
+    <h1 class="create-address-title">Criar novo endereço</h1>
+    <app-button-group [buttons]="backButton()"></app-button-group>
+    <app-address-form (addressSubmit)="createAddress($event)"></app-address-form>
+</section>

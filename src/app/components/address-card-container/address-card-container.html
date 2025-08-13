@@ -1,0 +1,14 @@
+<section class="address-cards-container">
+    <h3 class="address-cards-container-title">Endereços</h3>
+    @if (addresses().length === 0) {
+        <p class="address-cards-container-empty-message">Não há endereços cadastrados para o usuário</p>
+    }
+
+    @for (address of addresses(); track address.id) {
+        <app-address-card 
+            [address]="address"
+            (clickToDelete)="sendToDelete($event)"
+        >
+        </app-address-card>
+    }
+</section>

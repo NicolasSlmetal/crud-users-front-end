@@ -1,0 +1,17 @@
+<section class="update-address-container">
+    <h1 class="create-address-title">Editar endereço</h1>
+    <app-button-group [buttons]="backButton()"></app-button-group>
+    @if (address() !== null) {
+        <app-address-form 
+            [id]="address()!.id"
+            [(cep)]="address()!.cep"
+            [(number)]="address()!.number"
+            [(city)]="address()!.city"
+            [(neighborhood)]="address()!.neighborhood"
+            [(state)]="address()!.state"
+            [(street)]="address()!.street"
+            (addressSubmit)="updateAddress($event)"
+        >
+        </app-address-form>
+    }
+</section>

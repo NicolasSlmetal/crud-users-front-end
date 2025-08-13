@@ -1,0 +1,14 @@
+@if (isOpen()) {
+    <div class="confirm-modal-container">
+        <div class="confirm-modal">
+            <div class="confirm-modal-content">
+                <h2 class="confirm-modal-title">{{title()}}</h2>
+                <p class="confirm-modal-message">{{message()}}</p>
+            </div>
+            <div class="confirm-modal-button-control">
+                <button class="button" (click)="cancelAction()">Cancelar</button>
+                <button class="button danger" (click)="confirmAction()">Confirmar</button>
+            </div>
+        </div>
+    </div>
+}

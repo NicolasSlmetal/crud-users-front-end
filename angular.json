@@ -1,11 +1,19 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
+  
   "newProjectRoot": "projects",
   "projects": {
     "front-end": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "path": "src/app/components"
+        }, 
+        "@schematics/angular:service": {
+          "path": "src/app/services"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -29,7 +37,13 @@
             ]
           },
           "configurations": {
-            "production": {
+            "prod": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environment/environment.dev.ts",
+                  "with": "src/environment/environment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -44,7 +58,7 @@
               ],
               "outputHashing": "all"
             },
-            "development": {
+            "dev": {
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
@@ -55,14 +69,14 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "configurations": {
-            "production": {
-              "buildTarget": "front-end:build:production"
+            "prod": {
+              "buildTarget": "front-end:build:prod"
             },
-            "development": {
-              "buildTarget": "front-end:build:development"
+            "dev": {
+              "buildTarget": "front-end:build:dev"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "dev"
         },
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n"

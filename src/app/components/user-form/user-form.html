@@ -1,0 +1,14 @@
+<form class="user-form" (ngSubmit)="submit()">
+    <label for="name" class="user-form-label">Nome</label>
+    <input name="name" class="user-form-input input" type="text" [(ngModel)]="name" (ngModelChange)="validateName()">
+    <p class="user-form-error-message">{{errorName()}}</p>
+    <label for="email" class="user-form-label">E-mail</label>
+    <input name="email" class="user-form-input input" type="email" [(ngModel)]="email" (ngModelChange)="validateEmail()">
+    <p class="user-form-error-message">{{errorEmail()}}</p>
+    <label for="phone" class="user-form-label" >Telefone</label>
+    <input name="phone" class="user-form-input input" type="tel" [(ngModel)]="phone" (ngModelChange)="validatePhone()">
+    <p class="user-form-error-message">{{errorPhone()}}</p>
+    <button [ngClass]='{"disabled": !isValid()}' class="button user-form-button" type="submit" [disabled]="!isValid()">
+        {{id() === null ? "Criar" : "Atualizar"}}
+    </button>
+</form>

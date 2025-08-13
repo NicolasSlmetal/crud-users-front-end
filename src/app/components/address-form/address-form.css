@@ -1,0 +1,26 @@
+.address-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    min-width: 50vw;
+    border: 1px solid var(--black);
+    padding: 20px;
+}
+
+.address-form-label {
+    font-size: 1.2em;
+}
+
+.address-form-input {
+    width: 100%;
+}
+
+.address-form-button {
+    width: 100%;
+}
+
+.address-form-error-message {
+    color: var(--danger);
+}

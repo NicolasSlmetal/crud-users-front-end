@@ -1,0 +1,20 @@
+<form class="address-form" (ngSubmit)="submit()">
+    <label class="label" for="cep">CEP</label>
+    <input class="input address-form-input" type="text" name="cep" [(ngModel)]="cep" (ngModelChange)="validateCep()">
+    <p class="address-form-error-message">{{errorCep()}}</p>
+    <label for="street" class="label">Rua</label>
+    <input name="street" type="text" class="input address-form-input" [(ngModel)]="street" (ngModelChange)="validateStreet()">
+    <p class="address-form-error-message">{{errorStreet()}}</p>
+    <label for="number" class="label">Número</label>
+    <input name="number" type="text" class="input address-form-input" [(ngModel)]="number" (ngModelChange)="validateNumber()">
+    <p class="address-form-error-message">{{errorNumber()}}</p>
+    <label for="neighborhood" class="label">Bairro</label>
+    <input name="neighborhood" type="text" class="input address-form-input" [(ngModel)]="neighborhood" (ngModelChange)="validateNeighborhood()">
+    <label for="city" class="label">Cidade</label>
+    <input name="city" type="text" class="input address-form-input" [(ngModel)]="city" (ngModelChange)="validateCity()">
+    <label for="state" class="label">Estado</label>
+    <input name="state" type="text" class="input address-form-input" [(ngModel)]="state" (ngModelChange)="validateState()">
+    <button class="button address-form-button" type="submit" [ngClass]="{'disabled': !isValid()}" [disabled]="!isValid()">
+        {{id() === null ? 'Criar' : 'Atualizar'}}
+    </button>
+</form>

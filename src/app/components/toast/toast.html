@@ -1,0 +1,4 @@
+<div class="toast-container" [ngClass]="{'warning': type() === 'WARNING', 'danger': type() === 'ERROR', 'success': type() === 'SUCCESS'}">
+    <span class="toast-close-button" (click)="selfDestruct()">X</span>
+    <p class="toast-message" [innerHTML]="message()"></p>
+</div>

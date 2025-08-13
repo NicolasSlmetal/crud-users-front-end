@@ -1,0 +1,35 @@
+.toast-container {
+    position: relative;
+    padding: 16px;
+    color: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.toast-close-button {
+    top: 0;
+    width: 10%;
+    font-size: 1.8em;
+    border-radius: 50%;
+    color: var(--black);
+    cursor: pointer;
+}
+
+.toast-close-button:hover {
+    color: var(--secondary-color);
+}
+
+.warning {
+    background-color: var(--warning);
+}
+
+.success {
+    background-color: var(--success);
+}
+
+.danger {
+    background-color: var(--danger);
+}

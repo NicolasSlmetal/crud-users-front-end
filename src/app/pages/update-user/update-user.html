@@ -1,0 +1,13 @@
+<section class="update-user-container">
+    <h1 class="update-user-title">Atualizar usuário</h1>
+    <app-button-group [buttons]="[backButton()]"></app-button-group>
+    <app-user-form 
+        [id]="user().id"
+        [(email)]="user().email"
+        [(name)]="user().name"
+        [(phone)]="user().phone"
+        (userSubmit)="updateUser($event)"
+    >
+
+    </app-user-form>
+</section>

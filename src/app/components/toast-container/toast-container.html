@@ -1,0 +1,10 @@
+<section class="toast-container">
+    @for ( message of getMessages(); track message.timestamp) {
+        <app-toast 
+            (close)="removeByTimestamp($event)" 
+            [type]="message.type" 
+            [message]="message.text" 
+            [timestamp]="message.timestamp">
+        </app-toast>
+    }
+</section>

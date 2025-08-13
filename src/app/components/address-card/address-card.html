@@ -1,0 +1,13 @@
+<section class="address-card">
+    <div class="address-card-info">
+        <p class="address-card-text"><strong>CEP</strong>: {{address().cep}}</p>
+        <p class="address-card-text"><strong>Rua</strong>: {{address().street}}</p>
+        <p class="address-card-text"><strong>Número</strong>: {{address().number}}</p>
+        <p class="address-card-text"><strong>Bairro</strong>: {{address().neighborhood}}</p>
+        <p class="address-card-text"><strong>Cidade</strong>: {{address().city}}</p>
+        <p class="address-card-text"><strong>Estado</strong>: {{address().state}}</p>
+    </div>
+    <div class="address-card-actions">
+        <app-button-group [buttons]="buttons()"></app-button-group>
+    </div>
+</section>

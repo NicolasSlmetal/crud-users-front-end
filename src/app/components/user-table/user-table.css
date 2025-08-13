@@ -1,0 +1,35 @@
+.user-table-container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: flex-start;
+    gap: 20px
+}
+
+.user-table {
+    width: 80vw;
+    border-collapse: collapse;
+    padding: 16px;
+    border: 1px solid var(--black);
+}
+
+.user-table-head {
+    background-color: var(--primary-color);
+    padding: 12px;
+    border: 1px solid var(--black);
+}
+
+.user-table-row {
+    padding: 12px;
+}
+
+.user-table-column {
+    padding: 16px;
+    border: 1px solid var(--black);
+}
+
+.user-table-empty-advice {
+    font-size: 1.2em;
+}

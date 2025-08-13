@@ -1,0 +1,24 @@
+<section class="user-table-container">
+    
+    <table class="user-table">
+        <th class="user-table-head">Nome</th>
+        <th class="user-table-head">E-mail</th>
+        <th class="user-table-head">Telefone</th>
+        <th class="user-table-head">Detalhes</th>
+        @for (user of users(); track user.id) {
+            <tr class="user-table-row">
+                <td class="user-table-column">
+                    {{user.name}}
+                </td>
+                <td class="user-table-column">{{user.email}}</td>
+                <td class="user-table-column">{{user.phone}}</td>
+                <td class="user-table-column">
+                    <a class="button" [routerLink]="`/users/${user.id}`">Detalhes</a>
+                </td>
+            </tr>
+        }
+    </table>
+    @if (showEmptyMessage()) {
+        <p class="user-table-empty-advice">Não há usuários cadastrados</p>
+    }
+</section>

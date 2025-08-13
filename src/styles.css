@@ -1,1 +1,82 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --primary-color: #da7f08;
+    --secondary-color: #FFFFFF;
+    --terciary-color: #535342;
+    --darker-primary-color: #aa6204;
+    --darker-secondary-color: #9e9b9b;
+    --darker-terciary-color: #303027;
+    --disabled-color: #d6d6dac2;
+    --black: #000000;
+    --warning: #ffd105;
+    --darker-warning: #b3940c;
+    --danger: rgb(247, 6, 6);
+    --darker-danger: rgb(155, 10, 10);
+    --success: #05a012;
+    --darker-success: #04750e;
+    --main-font: 'Roboto, sans-serif';
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: var(--black);
+    cursor: pointer;
+}
+
+button {
+    border: 0;
+    cursor: pointer;
+}
+
+.button {
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.input {
+    border: 1px solid var(--primary-color);
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.input:focus {
+    border: 2px solid var(--darker-primary-color);
+    outline: none;
+}
+
+.button.warning {
+    background-color: var(--warning);
+}
+
+.button.warning:hover {
+    background-color: var(--darker-warning);
+}
+
+.button.danger {
+    background-color: var(--danger);
+}
+
+.button.danger:hover {
+    background-color: var(--darker-danger);
+}
+
+.button:hover {
+    background-color: var(--darker-primary-color);
+}
+
+.button.disabled {
+    background-color: var(--disabled-color);
+    color: var(--black);
+    cursor: not-allowed;
+}
+
+.button.disabled:hover {
+    background-color: var(--disabled-color);
+}

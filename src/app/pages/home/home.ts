@@ -2,7 +2,6 @@ import { Component, effect, Inject, OnInit, signal } from '@angular/core';
 import { UserTable } from '../../components/user-table/user-table';
 import { UserService } from '../../services/user-service/user-service';
 import { LoadingService } from '../../services/loading-service/loading-service';
-import { FormatService } from '../../services/format-service/format-service';
 import { ButtonGroup } from '../../components/button-group/button-group';
 import { AnchorItem } from '../../interfaces/anchor-item';
 
@@ -17,7 +16,6 @@ export class Home implements OnInit {
   constructor(
     @Inject(UserService) public userService: UserService, 
     @Inject(LoadingService) private loadingService: LoadingService,
-    @Inject(FormatService) private formatService: FormatService
   ) {
       effect(() => {
         if (!this.searched()) {

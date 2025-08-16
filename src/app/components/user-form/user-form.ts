@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, input, model, OnInit, Output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserModel } from '../../models/users/user-model';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-user-form',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, NgxMaskDirective],
   templateUrl: './user-form.html',
   styleUrl: './user-form.css'
 })
@@ -85,7 +86,7 @@ export class UserForm implements OnInit {
       id: Number(this.id()),
       name: this.name().trim(),
       email: this.email().trim(),
-      phone: this.phone().trim()
+      phone: this.phone().replace(/[^0-9]/, "").trim()
     });
   }
 
@@ -111,9 +112,9 @@ export class UserForm implements OnInit {
   }
 
   private isPhoneValid() {
-    const phone = this.phone();
+    const phone = this.phone().replace(/[^0-9]/, "");
     return phone !== undefined && 
-    phone !== null && phone.length > 10 && phone.length <= 12 &&
+    phone !== null &&
     /^\d{10,12}$/.test(phone);
   }
 

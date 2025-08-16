@@ -8,7 +8,6 @@ import { UserService } from '../user-service/user-service';
 import { catchError } from 'rxjs';
 import { ErrorHandlerService } from '../error-handler-service/error-handler-service';
 import { environment } from '../../../environments/environment.dev';
-import { FormatService } from '../format-service/format-service';
 
 @Injectable({
   providedIn: 'root'

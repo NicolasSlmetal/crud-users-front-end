@@ -51,6 +51,10 @@ button {
     outline: none;
 }
 
+.input.readonly {
+    background-color: var(--darker-secondary-color);
+}
+
 .button.warning {
     background-color: var(--warning);
 }

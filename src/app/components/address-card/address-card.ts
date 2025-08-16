@@ -3,10 +3,11 @@ import { ButtonGroup } from '../button-group/button-group';
 import { ButtonItem } from '../../interfaces/button-item';
 import { AnchorItem } from '../../interfaces/anchor-item';
 import { AddressModel } from '../../models/addresses/address-model';
+import { CepPipe } from '../../pipes/cep-pipe/cep-pipe';
 
 @Component({
   selector: 'app-address-card',
-  imports: [ButtonGroup],
+  imports: [ButtonGroup, CepPipe],
   templateUrl: './address-card.html',
   styleUrl: './address-card.css'
 })

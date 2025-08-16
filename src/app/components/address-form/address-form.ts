@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, input, model, OnInit, Output, signal } from '@angular/core';
+import { Component, effect, EventEmitter, input, model, OnInit, Output, Signal, signal, WritableSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AddressModel } from '../../models/addresses/address-model';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-address-form',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, NgxMaskDirective],
   templateUrl: './address-form.html',
   styleUrl: './address-form.css'
 })
@@ -21,6 +22,9 @@ export class AddressForm implements OnInit {
         number: this.number(),
         state: this.state()
       }
+      effect(() => {
+        this.validateForm();
+      })
   }
 
   ngOnInit(): void {
@@ -51,6 +55,7 @@ export class AddressForm implements OnInit {
   errorState = signal<string>("");
 
   @Output("addressSubmit") onSubmit = new EventEmitter<AddressModel>();
+  @Output("onCepSatisfied") onCepSatisfied = new EventEmitter<Record<string, WritableSignal<any>>>();
 
   isValid = signal<boolean>(false);
 
@@ -64,6 +69,17 @@ export class AddressForm implements OnInit {
       city: this.city().trim(),
       state: this.state().trim()
     });
+  }
+
+  public getAllWritableModels() : Record<string, WritableSignal<any>> {
+    return {
+      cep: this.cep,
+      number: this.number,
+      street: this.street,
+      neighborhood: this.neighborhood,
+      city: this.city,
+      state: this.state
+    }
   }
 
   private isEqualBeforeData() {
@@ -97,6 +113,7 @@ export class AddressForm implements OnInit {
     this.validateForm();
     if (this.isValidCep()) {
       this.errorCep.set("");
+      this.onCepSatisfied.emit(this.getAllWritableModels());
     } else {
       this.errorCep.set("CEP inválido");
     }

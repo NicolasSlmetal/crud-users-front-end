@@ -5,7 +5,6 @@ import { LoadingService } from '../loading-service/loading-service';
 import { CompleteUserModel } from '../../models/users/complete-user-model';
 import { ToastService } from '../toast-service/toast-service';
 import { Router } from '@angular/router';
-import { FormatService } from '../format-service/format-service';
 import { catchError } from 'rxjs';
 import { environment } from '../../../environments/environment.dev';
 import { ErrorHandlerService } from '../error-handler-service/error-handler-service';
@@ -18,7 +17,6 @@ export class UserService {
     @Inject(HttpClient) private httpClient: HttpClient,
     @Inject(ErrorHandlerService) private errorHandlerService: ErrorHandlerService,
     @Inject(ToastService) private toastService: ToastService, 
-    @Inject(FormatService) private formatService: FormatService,
     @Inject(LoadingService) private loadingService: LoadingService,
     @Inject(Router) private router: Router
   ) {
@@ -42,10 +40,7 @@ export class UserService {
       next: users => {
         setTimeout(() => {
           this.loadingService.finish();
-          this.users.set(users.map(user => ({
-            ...user,
-            phone: this.formatService.formatPhone(user.phone)
-          })));
+          this.users.set(users);
           if (onEnd !== undefined) {
             onEnd();
           }
@@ -106,14 +101,7 @@ export class UserService {
       next: userModel => {
         setTimeout(() => {
           this.loadingService.finish();
-          userModel.addresses.forEach(address => {
-            address.cep = this.formatService.formatCep(address.cep)
-          });
-          this.user.set({
-            ...userModel, 
-            phone: this.formatService.formatPhone(userModel.phone),
-            
-          })
+          this.user.set(userModel)
           sessionStorage.setItem(`user-${userModel.id}`, JSON.stringify(this.user()));
         }, 200);
       }, 
@@ -122,7 +110,7 @@ export class UserService {
 
   public createUser(userModel: UserModel, onEnd? : (...params : any) => void) {
     this.loadingService.load();
-    this.httpClient.post<UserModel>("${environment.baseApiUrl}/users", userModel)
+    this.httpClient.post<UserModel>(`${environment.baseApiUrl}/users`, userModel)
     .pipe(
      catchError((error, model) => {
         return this.errorHandlerService.handleError(error, "Não foi possível criar o usuário");

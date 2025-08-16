@@ -18,6 +18,7 @@ Aplicação Front-end de CRUD de usuários desenvolvida com Angular 20, contendo
 1. Node.js;
 2. npm;
 3. Angular 20;
+4. Ter feito o projeto do [back-end](https://github.com/NicolasSlmetal/crud-users-back-end) sendo executado na máquina. Siga as instruções do projeto do back-end caso não tenha feito.
 
 ## Passo a passo
 

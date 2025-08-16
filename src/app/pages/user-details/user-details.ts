@@ -9,10 +9,11 @@ import { ConfirmModal } from '../../components/confirm-modal/confirm-modal';
 import { AddressCardContainer } from '../../components/address-card-container/address-card-container';
 import { AddressModel } from '../../models/addresses/address-model';
 import { AddressService } from '../../services/address-service/address-service';
+import { PhonePipe } from '../../pipes/phone-pipe/phone-pipe';
 
 @Component({
   selector: 'app-user-details',
-  imports: [ButtonGroup, ConfirmModal, AddressCardContainer],
+  imports: [ButtonGroup, ConfirmModal, AddressCardContainer, PhonePipe],
   templateUrl: './user-details.html',
   styleUrl: './user-details.css'
 })

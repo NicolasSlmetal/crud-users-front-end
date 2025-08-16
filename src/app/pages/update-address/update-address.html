@@ -11,6 +11,7 @@
             [(state)]="address()!.state"
             [(street)]="address()!.street"
             (addressSubmit)="updateAddress($event)"
+            (onCepSatisfied)="fillAddressInfo($event)"
         >
         </app-address-form>
     }

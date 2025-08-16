@@ -1,4 +1,4 @@
-import { Component, effect, Inject, OnInit, signal } from '@angular/core';
+import { Component, effect, Inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { ButtonGroup } from '../../components/button-group/button-group';
 import { AddressForm } from '../../components/address-form/address-form';
 import { AddressService } from '../../services/address-service/address-service';
@@ -7,6 +7,7 @@ import { AddressModel } from '../../models/addresses/address-model';
 import { AnchorItem } from '../../interfaces/anchor-item';
 import { Router } from '@angular/router';
 import { UserModel } from '../../models/users/user-model';
+import { CepService } from '../../services/cep-service/cep-service';
 
 @Component({
   selector: 'app-update-address',
@@ -19,6 +20,7 @@ export class UpdateAddress implements OnInit {
   constructor(
     @Inject(AddressService) private addressService: AddressService,
     @Inject(UserService) private userService: UserService,
+    @Inject(CepService) private cepService: CepService,
     @Inject(Router) private router: Router
   ) {
     effect(() => {
@@ -52,6 +54,10 @@ export class UpdateAddress implements OnInit {
     this.addressService.updateAddress(addressModel, () => {
       this.router.navigate([`/users/${this.user()?.id}`])
     })
+  }
+
+  public fillAddressInfo(models: Record<string, WritableSignal<any>>) {
+    this.cepService.findAddressByCep(models);
   }
 
 }

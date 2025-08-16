@@ -74,7 +74,7 @@ function handleMultipleMessages(messages: string[]) : string {
 function appendFromErrorMatchMap(messages: string[], text: string) {
     for (const [key, value] of Object.entries(errorPatternMap)) {
         const [errorMatch] = messages.filter(message => new RegExp(key).test(message.toLowerCase().replaceAll(" ", "_")));
-        console.log({errorMatch});
+        
         if (errorMatch !== undefined) {
             text += `${value}<br>`;
         }

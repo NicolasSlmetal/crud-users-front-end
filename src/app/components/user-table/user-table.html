@@ -11,7 +11,7 @@
                     {{user.name}}
                 </td>
                 <td class="user-table-column">{{user.email}}</td>
-                <td class="user-table-column">{{user.phone}}</td>
+                <td class="user-table-column">{{user.phone | phone}}</td>
                 <td class="user-table-column">
                     <a class="button" [routerLink]="`/users/${user.id}`">Detalhes</a>
                 </td>

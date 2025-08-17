@@ -38,7 +38,9 @@ export class CreateAddress implements OnInit {
 
   ngOnInit(): void {
       
-      this.userService.findUserById();
+      this.userService.findUserById(() => {
+        this.router.navigate(["/home"]);
+      });
   }
 
   public createAddress(address: AddressModel) {

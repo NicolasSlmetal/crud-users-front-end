@@ -26,7 +26,9 @@ export class UpdateUser implements OnInit {
 
   ngOnInit(): void {
       const user = this.userService.user();
-      this.userService.findUserById();
+      this.userService.findUserById(() => {
+        this.router.navigate(["/home"]);
+      });
       if (user !== null) {
         this.backButton.set({
           type: "anchor",

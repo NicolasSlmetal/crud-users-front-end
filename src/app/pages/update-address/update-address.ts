@@ -44,8 +44,12 @@ export class UpdateAddress implements OnInit {
   address = signal<AddressModel | null>(null);
 
   ngOnInit(): void {
-      this.userService.findUserById();
-      this.addressService.findAddressById();
+      this.userService.findUserById(() => {
+        this.router.navigate(["/home"]);
+      });
+      this.addressService.findAddressById(() => {
+        this.router.navigate(["/home"]);
+      });
   }
 
   backButton = signal<AnchorItem[]>([]);
